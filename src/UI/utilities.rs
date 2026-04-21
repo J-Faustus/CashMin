@@ -99,8 +99,7 @@ pub fn avaiability_map(FN: u32, prices: &Vec<u32>) -> Vec<u128> {
         "There are too many unique price options to track. Cannot make availability map."
     );
 
-    let mut possibilities: Vec<u128> = Vec::new();
-    possibilities.reserve((FN + uniquePrices.iter().max().expect("")) as usize);
+    let mut possibilities: Vec<u128> = Vec::with_capacity((FN + uniquePrices.iter().max().expect("")) as usize);
     for _ in 0..FN + uniquePrices.iter().max().expect("") {
         possibilities.push(0);
     }
