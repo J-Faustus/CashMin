@@ -27,16 +27,14 @@ pub fn make_manual(categories: &Vec<Vec<String>>, possibilities: &Vec<u128>, pri
     let mut file = File::create("Zero_Track.txt").expect("Could not write file.");
 
     file.write(b"----------Price Categories----------\n");
-    let mut i = 0i32;
-    for category in categories {
+    for (i, category) in categories.iter().enumerate() {
         //categories moved. will not be used again
-        file.write(format!("{} -- {} cents\n", i, uniquePrices[i as usize]).as_bytes());
+        file.write(format!("{} -- {} cents\n", i, uniquePrices[i]).as_bytes());
         for name in category {
             file.write(name.as_bytes());
             file.write(b"\n");
         }
         file.write(b"\n");
-        i += 1;
     }
 
     file.write(b"\n\n");
